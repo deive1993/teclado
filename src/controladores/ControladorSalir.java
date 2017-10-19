@@ -1,17 +1,28 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controladores;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.JTextField;
 
-public class ControladorBorrar implements MouseListener{
-    private JTextField texto;
-    
-    
+/**
+ *
+ * @author USER
+ */
+public class ControladorSalir implements MouseListener{
+
     @Override
     public void mouseClicked(MouseEvent e) {
-        texto.setText("");
+      
+        System.exit(0);
+        
+        
+        
+        //setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        
     }
 
     @Override
