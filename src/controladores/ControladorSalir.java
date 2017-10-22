@@ -7,6 +7,7 @@ package controladores;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,9 +17,7 @@ public class ControladorSalir implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
-      
         System.exit(0);
-        
         
         
         //setDefaultCloseOperation(this.EXIT_ON_CLOSE);

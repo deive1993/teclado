@@ -1,10 +1,10 @@
 
-package ejercicio;
+package teclado;
 
 import visual.Teclado;
 
 
-public class Ejercicio {
+public class Principal {
 
     
     public static void main(String[] args) {
