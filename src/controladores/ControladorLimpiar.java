@@ -18,12 +18,12 @@ public class ControladorLimpiar implements MouseListener{
 
     
     private JTextField texto;
-    private ArrayList arrLetra;
+    
 
-    public ControladorLimpiar(JTextField texto, ArrayList arrLetra) {
+    public ControladorLimpiar(JTextField texto) {
         this.texto = texto;
-        this.arrLetra = arrLetra;
     }
+
     
     
     @Override

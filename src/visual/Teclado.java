@@ -30,23 +30,28 @@ public class Teclado extends JFrame{
     private JButton salir = new JButton("SALIR");
     private JTextField texto = new JTextField("") ;
     private ArrayList<Letra> arrLetra = new ArrayList();
-    private GridLayout contenedor = new GridLayout(5,10);
+    private GridLayout contenedor = new GridLayout(8,5);
+    private GroupLayout grupo;
     private ControladorSalir controladorSalir = new ControladorSalir();
-    private ControladorLimpiar controladorLimpiar = new ControladorLimpiar(texto,arrLetra);
-    private ControladorEspacio controladorEspacio = new ControladorEspacio();
+    private ControladorLimpiar controladorLimpiar = new ControladorLimpiar(texto);
+ //   private ControladorEspacio controladorEspacio = new ControladorEspacio();
     private ControladorBorrar controladorBorrar = new ControladorBorrar();
+    private String Letra;
 
     public Teclado() {
         this.setSize(500, 500);
         this.setLayout(contenedor);
         this.setLocationRelativeTo(this);
-        
+       // this.grupo.setAutoCreateGaps(true);
+      //  this.grupo.setAutoCreateContainerGaps(true);
         this.agregarComponentes();
         this.setVisible(true);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        
         this.salir.addMouseListener(controladorSalir);
-        this.espacio.addMouseListener(controladorEspacio);
-        this.limpiar.addMouseListener(controladorLimpiar);
-        this.borrar.addMouseListener(controladorBorrar);
+     //   this.espacio.addMouseListener(controladorEspacio);
+       this.limpiar.addMouseListener(controladorLimpiar);
+    //    this.borrar.addMouseListener(controladorBorrar);
     }
     private void agregarComponentes(){
         Integer i;
@@ -61,6 +66,28 @@ public class Teclado extends JFrame{
         this.add(borrar);
         this.add(limpiar);
         this.add(salir);
+        
+        
+        
+        /*
+        grupo.setHorizontalGroup(
+        grupo.createSequentialGroup()
+        .addComponent(espacio)
+        .addComponent(borrar)
+        .addGroup(grupo.createParallelGroup(GroupLayout.Alignment.LEADING)
+           .addComponent(limpiar)
+           .addComponent(salir))
+        );
+      
+        grupo.setVerticalGroup(
+        grupo.createSequentialGroup()
+        .addGroup(grupo.createParallelGroup(GroupLayout.Alignment.BASELINE)
+           .addComponent(c1)
+           .addComponent(c2)
+           .addComponent(c3))
+        .addComponent(c4)
+        );*/
+
     }
     
     private void cargarLetras(){

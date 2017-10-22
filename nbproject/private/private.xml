@@ -5,7 +5,9 @@
         <group>
             <file>file:/D:/CODO%20A%20CODO/teclado/src/visual/Teclado.java</file>
             <file>file:/D:/CODO%20A%20CODO/teclado/src/controladores/ControladorSalir.java</file>
+            <file>file:/D:/CODO%20A%20CODO/teclado/src/models/Letra.java</file>
             <file>file:/D:/CODO%20A%20CODO/teclado/src/controladores/ControladorLimpiar.java</file>
+            <file>file:/D:/CODO%20A%20CODO/teclado/src/controladores/ControladorLetraClick.java</file>
         </group>
     </open-files>
 </project-private>

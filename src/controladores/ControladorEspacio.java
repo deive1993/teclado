@@ -8,17 +8,12 @@ public class ControladorEspacio implements MouseListener{
     
     private JTextField texto;
     private String letra;
-/*
-    public ControladorEspacio(JTextField texto, String letra) {
+
+    public ControladorEspacio(JTextField texto) {
         this.texto = texto;
         this.letra = letra;
     }
 
-    public ControladorEspacio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    */
         
            
     
