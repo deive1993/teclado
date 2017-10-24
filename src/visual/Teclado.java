@@ -10,6 +10,8 @@ import controladores.ControladorEspacio;
 import controladores.ControladorLimpiar;
 import controladores.ControladorSalir;
 import java.awt.GridLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,6 +20,7 @@ import models.Letra;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.ParallelGroup; 
 import javax.swing.GroupLayout.SequentialGroup; 
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,6 +42,7 @@ public class Teclado extends JFrame{
     private String Letra;
 
     public Teclado() {
+        cerrar();
         this.setSize(500, 500);
         this.setLayout(contenedor);
         this.setLocationRelativeTo(this);
@@ -99,5 +103,27 @@ public class Teclado extends JFrame{
     }
     
     
+        public void cerrar(){
+        try {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            addWindowListener(new WindowAdapter() {
+                public void windowclosing (WindowEvent e ){
+                    confirmarSalida();
+                    
+                }
+        });
+            this.setVisible(true);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
+    public void confirmarSalida(){
+        int valor = JOptionPane.showConfirmDialog(this, "¿Esta seguro que desea salir?","Advertencia",JOptionPane.YES_NO_OPTION);
+    
+        if(valor==JOptionPane.YES_OPTION);
+        JOptionPane.showMessageDialog(null, "Gracias por su visita hasta pronto", "Gracias",JOptionPane.INFORMATION_MESSAGE);
+        System.exit(0);
+    }
 }
