@@ -1,28 +1,21 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package controladores;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
-import javax.swing.JTextField;
-import models.Letra;
 
-public class ControladorEspacio implements MouseListener{
-    
-    private JTextField texto;
-    private String letra;
+/**
+ *
+ * @author PC12
+ */
+public class ControladorNumeroClick implements MouseListener{
 
-
-    public ControladorEspacio(JTextField texto, String letra) {
-        this.texto = texto;
-        this.letra = letra;    }
-
-        
-           
-    
-    
     @Override
     public void mouseClicked(MouseEvent e) {
-   
     }
 
     @Override
@@ -40,6 +33,5 @@ public class ControladorEspacio implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
     }
-    
     
 }

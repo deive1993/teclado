@@ -17,6 +17,7 @@ public class Letra extends JButton {
      private JTextField texto;
      
      private ControladorLetraClick controladorClick;
+     private ControladorEspacio controladorEspacio;
      
 
     public Letra(String letra, JTextField texto) {
@@ -25,8 +26,11 @@ public class Letra extends JButton {
         this.texto = texto;
         
         controladorClick = new ControladorLetraClick(texto,letra);
+        controladorEspacio = new ControladorEspacio(texto,letra);
         
         this.addMouseListener(controladorClick);
+        this.addMouseListener(controladorEspacio);
+        
     }
 
    

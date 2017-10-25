@@ -33,6 +33,8 @@ public class Teclado extends JFrame{
     private JButton salir = new JButton("SALIR");
     private JTextField texto = new JTextField("") ;
     private ArrayList<Letra> arrLetra = new ArrayList();
+    private ArrayList<Letra> arrNumero = new ArrayList();
+    private ArrayList<Letra> arrSimbolo = new ArrayList();
     private GridLayout contenedor = new GridLayout(8,5);
     private GroupLayout grupo;
     private ControladorSalir controladorSalir = new ControladorSalir();
@@ -42,7 +44,7 @@ public class Teclado extends JFrame{
     private String Letra;
 
     public Teclado() {
-        cerrar();
+        
         this.setSize(500, 500);
         this.setLayout(contenedor);
         this.setLocationRelativeTo(this);
@@ -61,7 +63,10 @@ public class Teclado extends JFrame{
         Integer i;
         texto = new JTextField();
         this.cargarLetras();
+        this.cargarNumero();
+        this.cargarSimbolo();
         this.add(texto);
+       
         for (i = 0; i < arrLetra.size(); i++){
             this.add(arrLetra.get(i));
         }
@@ -71,9 +76,9 @@ public class Teclado extends JFrame{
         this.add(limpiar);
         this.add(salir);
         
+        }
+      /*  
         
-        
-        /*
         grupo.setHorizontalGroup(
         grupo.createSequentialGroup()
         .addComponent(espacio)
@@ -90,19 +95,46 @@ public class Teclado extends JFrame{
            .addComponent(c2)
            .addComponent(c3))
         .addComponent(c4)
-        );*/
-
-    }
+        );
+ */
+    
+   
     
     private void cargarLetras(){
         Integer i;
         for (i = 97; i <= 122; i++){
             arrLetra.add(new Letra(String.valueOf((char)(int) i), texto));
         }
-            
     }
+  
+
+    private void cargarSimbolo() {
+
+        Integer i;
+        for (i = 33; i <= 47; i++){
+            arrLetra.add(new Letra(String.valueOf((char)(int) i), texto));
+        }
+    }
+
+    private void cargarNumero() {
+        Integer i;
+        for (i = 48; i <= 57; i++){
+            arrLetra.add(new Letra(String.valueOf((char)(int) i), texto));
+        }
+    }
+}
+
+
+
+
+
     
     
+    
+    
+        
+        /*
+
         public void cerrar(){
         try {
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -126,4 +158,4 @@ public class Teclado extends JFrame{
         JOptionPane.showMessageDialog(null, "Gracias por su visita hasta pronto", "Gracias",JOptionPane.INFORMATION_MESSAGE);
         System.exit(0);
     }
-}
+        */
