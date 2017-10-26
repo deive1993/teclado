@@ -18,9 +18,12 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import models.Letra;
 import javax.swing.GroupLayout;
+import static javax.swing.GroupLayout.Alignment.BASELINE;
+import static javax.swing.GroupLayout.Alignment.LEADING;
 import javax.swing.GroupLayout.ParallelGroup; 
 import javax.swing.GroupLayout.SequentialGroup; 
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -36,7 +39,7 @@ public class Teclado extends JFrame{
     private ArrayList<Letra> arrNumero = new ArrayList();
     private ArrayList<Letra> arrSimbolo = new ArrayList();
     private GridLayout contenedor = new GridLayout(8,5);
-    private GroupLayout grupo;
+    private GroupLayout grupo = new GroupLayout(this);
     private ControladorSalir controladorSalir = new ControladorSalir();
     private ControladorLimpiar controladorLimpiar = new ControladorLimpiar(texto);
  //   private ControladorEspacio controladorEspacio = new ControladorEspacio();
@@ -48,8 +51,8 @@ public class Teclado extends JFrame{
         this.setSize(500, 500);
         this.setLayout(contenedor);
         this.setLocationRelativeTo(this);
-       // this.grupo.setAutoCreateGaps(true);
-      //  this.grupo.setAutoCreateContainerGaps(true);
+        grupo.setAutoCreateGaps(true);
+        grupo.setAutoCreateContainerGaps(true);
         this.agregarComponentes();
         this.setVisible(true);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
@@ -59,9 +62,11 @@ public class Teclado extends JFrame{
        this.limpiar.addMouseListener(controladorLimpiar);
     //    this.borrar.addMouseListener(controladorBorrar);
     }
+   
     private void agregarComponentes(){
         Integer i;
         texto = new JTextField();
+        
         this.cargarLetras();
         this.cargarNumero();
         this.cargarSimbolo();
@@ -70,34 +75,55 @@ public class Teclado extends JFrame{
         for (i = 0; i < arrLetra.size(); i++){
             this.add(arrLetra.get(i));
         }
-        
+       
+        /*
         this.add(espacio);
         this.add(borrar);
         this.add(limpiar);
         this.add(salir);
+        */
         
-        }
-      /*  
-        
-        grupo.setHorizontalGroup(
-        grupo.createSequentialGroup()
-        .addComponent(espacio)
-        .addComponent(borrar)
-        .addGroup(grupo.createParallelGroup(GroupLayout.Alignment.LEADING)
-           .addComponent(limpiar)
-           .addComponent(salir))
-        );
-      
-        grupo.setVerticalGroup(
-        grupo.createSequentialGroup()
-        .addGroup(grupo.createParallelGroup(GroupLayout.Alignment.BASELINE)
-           .addComponent(c1)
-           .addComponent(c2)
-           .addComponent(c3))
-        .addComponent(c4)
-        );
- */
+        //crea la primera columna
+        grupo.setHorizontalGroup(grupo.createSequentialGroup()
+            .addComponent(espacio)
+                //se agrega la segunda columna
+         .addGroup(grupo.createParallelGroup(LEADING)
+            .addComponent(texto)
+            .addGroup(grupo.createSequentialGroup()
+                .addGroup(grupo.createParallelGroup(LEADING)
+                    //simbolo y numeros
+                        .addComponent(limpiar))
+                    
+                .addGroup(grupo.createParallelGroup(LEADING)
+                   // .addComponent(borrar)
+                    .addComponent(borrar)
+                    .addComponent(salir))))
+        .addGroup(grupo.createParallelGroup(LEADING)
+            
+            .addComponent(salir))
+    );
+ 
     
+    grupo.linkSize(SwingConstants.HORIZONTAL, limpiar,salir);
+  
+    grupo.setVerticalGroup(grupo.createSequentialGroup()
+        .addGroup(grupo.createParallelGroup(BASELINE)
+            .addComponent(espacio)
+            .addComponent(texto)
+            .addComponent(borrar))
+        .addGroup(grupo.createParallelGroup(LEADING)
+            .addGroup(grupo.createSequentialGroup()
+                .addGroup(grupo.createParallelGroup(BASELINE)
+                   // .addComponent(checkBox1)
+                    .addComponent(limpiar))
+                .addGroup(grupo.createParallelGroup(BASELINE)
+                    .addComponent(limpiar)
+                    .addComponent(limpiar)))
+            .addComponent(salir))
+    );
+    
+        }
+
    
     
     private void cargarLetras(){
@@ -122,6 +148,29 @@ public class Teclado extends JFrame{
             arrLetra.add(new Letra(String.valueOf((char)(int) i), texto));
         }
     }
+    
+          
+        /*
+        grupo.setHorizontalGroup(
+        grupo.createSequentialGroup()
+        .addComponent(espacio)
+        .addComponent(borrar)
+        .addGroup(grupo.createParallelGroup(GroupLayout.Alignment.LEADING)
+           .addComponent(limpiar)
+           .addComponent(salir))
+        );
+      
+        grupo.setVerticalGroup(
+        grupo.createSequentialGroup()
+        .addGroup(grupo.createParallelGroup(GroupLayout.Alignment.BASELINE)
+           .addComponent(c1)
+           .addComponent(c2)
+           .addComponent(c3))
+        .addComponent(c4)
+        );
+ */
+
+   
 }
 
 
