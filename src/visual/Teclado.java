@@ -24,6 +24,8 @@ import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup; 
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import models.Numero;
+import models.Simbolo;
 
 /**
  *
@@ -34,16 +36,19 @@ public class Teclado extends JFrame{
     private JButton espacio = new JButton("ESPACIO");
     private JButton limpiar = new JButton("LIMPIAR");
     private JButton salir = new JButton("SALIR");
+    private JButton guardar = new JButton("GUARDAR");
+    private JButton obtener = new JButton("OBTENER");
+    private JButton borrarDao = new JButton("BORRARDAO");
     private JTextField texto = new JTextField("") ;
     private ArrayList<Letra> arrLetra = new ArrayList();
-    private ArrayList<Letra> arrNumero = new ArrayList();
-    private ArrayList<Letra> arrSimbolo = new ArrayList();
+    private ArrayList<Numero> arrNumero = new ArrayList();
+    private ArrayList<Simbolo> arrSimbolo = new ArrayList();
     private GridLayout contenedor = new GridLayout(8,5);
     private GroupLayout grupo = new GroupLayout(this);
     private ControladorSalir controladorSalir = new ControladorSalir();
     private ControladorLimpiar controladorLimpiar = new ControladorLimpiar(texto);
- //   private ControladorEspacio controladorEspacio = new ControladorEspacio();
-    private ControladorBorrar controladorBorrar = new ControladorBorrar();
+    private ControladorEspacio controladorEspacio = new ControladorEspacio(texto,arrLetra,arrNumero,arrSimbolo);
+    private ControladorBorrar controladorBorrar = new ControladorBorrar(texto);
     private String Letra;
 
     public Teclado() {
@@ -58,14 +63,15 @@ public class Teclado extends JFrame{
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         
         this.salir.addMouseListener(controladorSalir);
-     //   this.espacio.addMouseListener(controladorEspacio);
-       this.limpiar.addMouseListener(controladorLimpiar);
+        this.borrar.addMouseListener(controladorBorrar);
+        this.espacio.addMouseListener(controladorEspacio);
+        this.limpiar.addMouseListener(controladorLimpiar);
     //    this.borrar.addMouseListener(controladorBorrar);
     }
    
     private void agregarComponentes(){
         Integer i;
-        texto = new JTextField();
+        //texto = new JTextField();
         
         this.cargarLetras();
         this.cargarNumero();
@@ -97,7 +103,11 @@ public class Teclado extends JFrame{
                 .addGroup(grupo.createParallelGroup(LEADING)
                    // .addComponent(borrar)
                     .addComponent(borrar)
-                    .addComponent(salir))))
+                    .addComponent(salir)
+                    .addComponent(guardar)
+                    .addComponent(obtener)
+                    .addComponent(borrarDao)
+                )))
         .addGroup(grupo.createParallelGroup(LEADING)
             
             .addComponent(salir))
@@ -125,7 +135,7 @@ public class Teclado extends JFrame{
         }
 
    
-    
+    //arrayletra
     private void cargarLetras(){
         Integer i;
         for (i = 97; i <= 122; i++){
@@ -133,7 +143,7 @@ public class Teclado extends JFrame{
         }
     }
   
-
+ //arraysimbolo
     private void cargarSimbolo() {
 
         Integer i;
@@ -142,6 +152,8 @@ public class Teclado extends JFrame{
         }
     }
 
+     //arraynumero
+    
     private void cargarNumero() {
         Integer i;
         for (i = 48; i <= 57; i++){

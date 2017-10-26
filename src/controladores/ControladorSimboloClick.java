@@ -13,20 +13,19 @@ import javax.swing.JTextField;
  *
  * @author PC12
  */
-public class ControladorNumeroClick implements MouseListener{
-
+public class ControladorSimboloClick implements MouseListener{
+    
     private JTextField texto;
-    private String numero;
+    private String simbolo;
 
-    public ControladorNumeroClick(JTextField texto, String numero) {
+    public ControladorSimboloClick(JTextField texto, String simbolo) {
         this.texto = texto;
-        this.numero = numero;
+        this.simbolo = simbolo;
     }
-    
-    
+
     @Override
     public void mouseClicked(MouseEvent e) {
-        texto.setText(texto.getText()+ numero);
+        texto.setText(texto.getText()+ simbolo);
     }
 
     @Override

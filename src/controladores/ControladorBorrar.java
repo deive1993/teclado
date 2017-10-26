@@ -7,11 +7,16 @@ import javax.swing.JTextField;
 
 public class ControladorBorrar implements MouseListener{
     private JTextField texto;
+
+    public ControladorBorrar(JTextField texto) {
+        this.texto = texto;
+    }
     
     
     @Override
     public void mouseClicked(MouseEvent e) {
-        texto.setText("");
+        System.out.println("borrar");
+        texto.setText(" ");
     }
 
     @Override

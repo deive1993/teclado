@@ -9,19 +9,24 @@ import models.Letra;
 public class ControladorEspacio implements MouseListener{
     
     private JTextField texto;
-    private String letra;
+    private ArrayList arrayletra;
+    private ArrayList arrNumero;
+    private ArrayList arrSimbolo;
 
-
-    public ControladorEspacio(JTextField texto, String letra) {
+    public ControladorEspacio(JTextField texto, ArrayList arrayletra, ArrayList arrNumero, ArrayList arrSimbolo) {
         this.texto = texto;
-        this.letra = letra;    }
+        this.arrayletra = arrayletra;
+        this.arrNumero = arrNumero;
+        this.arrSimbolo = arrSimbolo;
+    }
 
-        
+    
            
     
     
     @Override
     public void mouseClicked(MouseEvent e) {
+        texto.setText("_");
    
     }
 

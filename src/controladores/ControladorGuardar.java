@@ -7,26 +7,15 @@ package controladores;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.JTextField;
 
 /**
  *
  * @author PC12
  */
-public class ControladorNumeroClick implements MouseListener{
+public class ControladorGuardar implements MouseListener{
 
-    private JTextField texto;
-    private String numero;
-
-    public ControladorNumeroClick(JTextField texto, String numero) {
-        this.texto = texto;
-        this.numero = numero;
-    }
-    
-    
     @Override
     public void mouseClicked(MouseEvent e) {
-        texto.setText(texto.getText()+ numero);
     }
 
     @Override
