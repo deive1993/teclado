@@ -12,7 +12,7 @@ public class Principal {
          
         Teclado teclado = new Teclado();
         
-        teclado.setAlwaysOnTop(true);
+        //teclado.setAlwaysOnTop(true);
     }
     
 }

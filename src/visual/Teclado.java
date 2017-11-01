@@ -7,6 +7,7 @@ package visual;
 
 import controladores.ControladorBorrar;
 import controladores.ControladorEspacio;
+import controladores.ControladorGuardar;
 import controladores.ControladorLimpiar;
 import controladores.ControladorSalir;
 import java.awt.GridLayout;
@@ -49,11 +50,12 @@ public class Teclado extends JFrame{
     private ControladorLimpiar controladorLimpiar = new ControladorLimpiar(texto);
     private ControladorEspacio controladorEspacio = new ControladorEspacio(texto,arrLetra,arrNumero,arrSimbolo);
     private ControladorBorrar controladorBorrar = new ControladorBorrar(texto);
+    private ControladorGuardar controladorGuardar = new ControladorGuardar(texto);
     private String Letra;
 
     public Teclado() {
         
-        this.setSize(500, 500);
+        this.setSize(900, 500);
         this.setLayout(contenedor);
         this.setLocationRelativeTo(this);
         grupo.setAutoCreateGaps(true);
@@ -66,13 +68,13 @@ public class Teclado extends JFrame{
         this.borrar.addMouseListener(controladorBorrar);
         this.espacio.addMouseListener(controladorEspacio);
         this.limpiar.addMouseListener(controladorLimpiar);
+        this.guardar.addMouseListener(controladorGuardar);
     //    this.borrar.addMouseListener(controladorBorrar);
     }
    
     private void agregarComponentes(){
         Integer i;
         //texto = new JTextField();
-        
         this.cargarLetras();
         this.cargarNumero();
         this.cargarSimbolo();
