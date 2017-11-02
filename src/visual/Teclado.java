@@ -6,6 +6,7 @@
 package visual;
 
 import controladores.ControladorBorrar;
+import controladores.ControladorBorrarDao;
 import controladores.ControladorEspacio;
 import controladores.ControladorGuardar;
 import controladores.ControladorLimpiar;
@@ -51,6 +52,7 @@ public class Teclado extends JFrame{
     private ControladorEspacio controladorEspacio = new ControladorEspacio(texto,arrLetra,arrNumero,arrSimbolo);
     private ControladorBorrar controladorBorrar = new ControladorBorrar(texto);
     private ControladorGuardar controladorGuardar = new ControladorGuardar(texto);
+    private ControladorBorrarDao controladorBorrarDao = new ControladorBorrarDao();
     private String Letra;
 
     public Teclado() {
@@ -69,7 +71,8 @@ public class Teclado extends JFrame{
         this.espacio.addMouseListener(controladorEspacio);
         this.limpiar.addMouseListener(controladorLimpiar);
         this.guardar.addMouseListener(controladorGuardar);
-    //    this.borrar.addMouseListener(controladorBorrar);
+        this.borrarDao.addMouseListener(controladorBorrarDao);
+   
     }
    
     private void agregarComponentes(){

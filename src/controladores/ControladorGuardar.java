@@ -31,6 +31,7 @@ public class ControladorGuardar implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent evt) {
+       
         try {
                 Class.forName(driver);
             conect=DriverManager.getConnection(url,user,password);
