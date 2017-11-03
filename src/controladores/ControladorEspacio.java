@@ -26,7 +26,7 @@ public class ControladorEspacio implements MouseListener{
     
     @Override
     public void mouseClicked(MouseEvent e) {
-        texto.setText("_");
+        texto.setText(texto.getText()+ " ");
    
     }
 

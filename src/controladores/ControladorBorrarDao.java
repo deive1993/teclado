@@ -8,7 +8,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import tecladoDAO.Conectar;
 
 /**
@@ -27,13 +26,21 @@ public class ControladorBorrarDao implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent evt) {
-         try {
+         System.out.println("borrado");
+        try {
                 Class.forName(driver);
             conect=DriverManager.getConnection(url,user,password);
+             System.out.println("borrado");
             borrar=conect.prepareStatement("delete from palabras where id = (select max(id) from palabras a))");
-            borrar.executeUpdate();
+            ultid = conect.prepareStatement("SELECT * FROM `palabras` WHERE 1");
+            borrar=conect.prepareStatement("delete from palabras where id = (select max(id) from palabras a))");
+                    //borrar.setString(1, texto.getText());
+            borrar.executeQuery();
             
-//borrar.setString(1, texto.getText());
+            SELECT maxi(id) as ultid FROM `palabras`
+
+delete from palabras where id = ultid
+.
             
             
             JOptionPane.showMessageDialog(null, "palabras borradas exitosamente");
