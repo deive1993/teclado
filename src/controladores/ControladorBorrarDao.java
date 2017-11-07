@@ -22,25 +22,30 @@ public class ControladorBorrarDao implements MouseListener{
    String password = "";
    String url = "jdbc:mysql://localhost:3306/teclado";
    String driver= "com.mysql.jdbc.Driver";
+   String ultimoid;
 
 
     @Override
     public void mouseClicked(MouseEvent evt) {
          System.out.println("borrado");
         try {
-                Class.forName(driver);
+            Class.forName(driver);
             conect=DriverManager.getConnection(url,user,password);
-             System.out.println("borrado");
+          
+           // borrar=conect.prepareStatement("delete from palabras where id = (select max(id) from palabras a))");
+            borrar=conect.prepareStatement("delete from palabras where id = 1");
+           
+            /*borrar.setString(1, tabla.getc);
+            
+            ultimoid = conect.prepareStatement("delete from palabras where id = (select max(id) from palabras a))");
             borrar=conect.prepareStatement("delete from palabras where id = (select max(id) from palabras a))");
-            ultid = conect.prepareStatement("SELECT * FROM `palabras` WHERE 1");
-            borrar=conect.prepareStatement("delete from palabras where id = (select max(id) from palabras a))");
-                    //borrar.setString(1, texto.getText());
+                    
             borrar.executeQuery();
             
             SELECT maxi(id) as ultid FROM `palabras`
 
 delete from palabras where id = ultid
-.
+.*/
             
             
             JOptionPane.showMessageDialog(null, "palabras borradas exitosamente");
