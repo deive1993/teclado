@@ -7,6 +7,15 @@ package controladores;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import tecladoDAO.Conectar;
+import tecladoDAO.ConsultasDAO;
 
 /**
  *
@@ -15,7 +24,16 @@ import java.awt.event.MouseListener;
 public class ControladorObtener implements MouseListener{
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mouseClicked(MouseEvent evt) {
+       
+        ConsultasDAO consultasDAO = new ConsultasDAO();
+        try {
+            System.out.println(consultasDAO.obtenerUltPalabra("palabras"));
+           //consultasDAO.obtenerMaxID("palabras");
+             JOptionPane.showMessageDialog(null, "Palabra obtenida");
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorBorrarDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

@@ -8,8 +8,10 @@ package controladores;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import tecladoDAO.Conectar;
@@ -21,11 +23,19 @@ import tecladoDAO.ConsultasDAO;
  */
 public class ControladorGuardar implements MouseListener{
    private JTextField texto;
+       private ArrayList<String> letraIngresada;
+    private JList<String> palabrasIngresadas;
+
+    
+
+
+    public ControladorGuardar(JTextField texto, JList<String> palabrasIngresadas, ArrayList<String> letraIngresada) {
+        this.texto = texto;
+        this.letraIngresada = letraIngresada;
+        this.palabrasIngresadas = palabrasIngresadas;
+    }
    
 
-    public ControladorGuardar(JTextField texto) {
-        this.texto = texto;
-    }
 
     @Override
     public void mouseClicked(MouseEvent evt) {
@@ -36,8 +46,13 @@ public class ControladorGuardar implements MouseListener{
        } catch (SQLException ex) {
            Logger.getLogger(ControladorGuardar.class.getName()).log(Level.SEVERE, null, ex);
        }
-        texto.setText("");
+      letraIngresada.add(texto.getText());
+              String[]data = (String[])letraIngresada.toArray(new String[letraIngresada.size()]);
+        palabrasIngresadas.setListData(data);
+       texto.setText("");
+        
     }     
+    
     @Override
     public void mousePressed(MouseEvent e) {
     }

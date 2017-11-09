@@ -22,6 +22,7 @@ public class ControladorBorrarDao implements MouseListener{
 
     @Override
     public void mouseClicked(MouseEvent evt) {
+        
         ConsultasDAO consultasDAO = new ConsultasDAO();
         try {
             //System.out.println(consultasDAO.obtenerMaxID("palabras"));

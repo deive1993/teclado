@@ -10,10 +10,13 @@ import controladores.ControladorBorrarDao;
 import controladores.ControladorEspacio;
 import controladores.ControladorGuardar;
 import controladores.ControladorLimpiar;
+import controladores.ControladorObtener;
 import controladores.ControladorSalir;
 import java.awt.GridLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,8 +27,11 @@ import static javax.swing.GroupLayout.Alignment.BASELINE;
 import static javax.swing.GroupLayout.Alignment.LEADING;
 import javax.swing.GroupLayout.ParallelGroup; 
 import javax.swing.GroupLayout.SequentialGroup; 
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
 import models.Numero;
 import models.Simbolo;
 
@@ -42,6 +48,10 @@ public class Teclado extends JFrame{
     private JButton obtener = new JButton("OBTENER");
     private JButton borrarDao = new JButton("BORRARDAO");
     private JTextField texto = new JTextField("") ;
+        //arraylist 
+    private ArrayList<String> letraIngresada = new ArrayList<String>();
+    private JList<String> palabrasIngresadas = new JList<String>();
+    private JTable tablaTeclado = new JTable();
     private ArrayList<Letra> arrLetra = new ArrayList();
     private ArrayList<Numero> arrNumero = new ArrayList();
     private ArrayList<Simbolo> arrSimbolo = new ArrayList();
@@ -51,13 +61,14 @@ public class Teclado extends JFrame{
     private ControladorLimpiar controladorLimpiar = new ControladorLimpiar(texto);
     private ControladorEspacio controladorEspacio = new ControladorEspacio(texto,arrLetra,arrNumero,arrSimbolo);
     private ControladorBorrar controladorBorrar = new ControladorBorrar(texto);
-    private ControladorGuardar controladorGuardar = new ControladorGuardar(texto);
+    private ControladorObtener controladorObtener = new ControladorObtener();
+    private ControladorGuardar controladorGuardar = new ControladorGuardar(texto,palabrasIngresadas,letraIngresada);
     private ControladorBorrarDao controladorBorrarDao = new ControladorBorrarDao();
     private String Letra;
 
     public Teclado() {
         
-        this.setSize(900, 500);
+        this.setSize(900, 700);
         this.setLayout(contenedor);
         this.setLocationRelativeTo(this);
         grupo.setAutoCreateGaps(true);
@@ -72,6 +83,7 @@ public class Teclado extends JFrame{
         this.limpiar.addMouseListener(controladorLimpiar);
         this.guardar.addMouseListener(controladorGuardar);
         this.borrarDao.addMouseListener(controladorBorrarDao);
+        this.obtener.addMouseListener(controladorObtener);
    
     }
    
@@ -135,6 +147,8 @@ public class Teclado extends JFrame{
                     .addComponent(limpiar)
                     .addComponent(limpiar)))
             .addComponent(salir))
+         //   .addComponent(palabrasIngresadas)
+            .addComponent(tablaTeclado)
     );
     
         }
@@ -185,9 +199,21 @@ public class Teclado extends JFrame{
            .addComponent(c3))
         .addComponent(c4)
         );
- */
 
-   
+
+    public void mostrarPalabras(String tabla) throws SQLException{
+     
+            
+             DefaultTableModel modelo = new DefaultTableModel();
+            //modelo.addColumn("id");
+            modelo.addColumn("palabra");
+            tablaTeclado.setModel(modelo);
+            
+            String sql = "SELECT*FROM palabras";
+            String datos[]=new String[2];
+           Statement st= cn.createStatement();
+           
+    } */
 }
 
 

@@ -10,7 +10,11 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import models.Letra;
+import visual.Teclado;
 
 
 public class ConsultasDAO {
@@ -69,4 +73,64 @@ public class ConsultasDAO {
       
    }
    
+      public String obtenerUltPalabra(String tabla) throws SQLException{
+         String rstado= null;
+     try{
+         System.out.println(tabla);
+         conect=DriverManager.getConnection(url,user,password);
+         PreparedStatement consulta = conect.prepareStatement("select max(palabra) as ultid from " + tabla );
+         ResultSet resultados = consulta.executeQuery();
+         while(resultados.next()){
+          rstado=resultados.getString(null);
+         }
+         
+      }catch(SQLException e){
+         JOptionPane.showMessageDialog(null, e);
+      }
+      conect.close(); 
+       return rstado;
+      
+      
+   }
+        public void mostrarPalabras(String tabla) throws SQLException{
+     
+            
+             DefaultTableModel modelo = new DefaultTableModel();
+            //modelo.addColumn("id");
+            modelo.addColumn("palabra");
+            tablaTeclado.setModel(modelo);
+     
+     
+         String rstado= null;
+     try{
+         System.out.println(tabla);
+         conect=DriverManager.getConnection(url,user,password);
+         PreparedStatement consulta = conect.prepareStatement("select max(palabra) as ultid from " + tabla );
+         ResultSet resultados = consulta.executeQuery();
+         while(resultados.next()){
+          rstado=resultados.getString(null);
+         }
+         
+      }catch(SQLException e){
+         JOptionPane.showMessageDialog(null, e);
+      }
+      conect.close(); 
+       return rstado;
+      
+      
+   }
+    public ArrayList<Letra> recuperarTodas(String tabla) throws SQLException{
+      ArrayList<Letra> lista = new ArrayList<>();
+      try{
+         PreparedStatement consulta = conect.prepareStatement("SELECT letra, from " + tabla);
+         ResultSet resultado = consulta.executeQuery();
+         while(resultado.next()){
+            lista.add(new Letra(resultado.getString("letra")));
+         }
+      }catch(SQLException ex){
+         throw new SQLException(ex);
+      }
+      return lista;
+   }
+
 }
