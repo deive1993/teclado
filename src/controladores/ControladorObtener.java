@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import tecladoDAO.Conectar;
 import tecladoDAO.ConsultasDAO;
 
@@ -23,6 +24,8 @@ import tecladoDAO.ConsultasDAO;
  */
 public class ControladorObtener implements MouseListener{
 
+    private JTextField texto;
+    
     
     @Override
     public void mouseClicked(MouseEvent evt) {
@@ -31,10 +34,12 @@ public class ControladorObtener implements MouseListener{
         try {
          //   System.out.println(consultasDAO.obtenerMaxID("palabras"));
           String rst = consultasDAO.obtenerPalabraID("palabras", consultasDAO.obtenerMaxID("palabras"));
-             JOptionPane.showMessageDialog(null, "Palabra obtenida" + rst);
+             JOptionPane.showMessageDialog(null, "Palabra obtenida " + rst);
         } catch (SQLException ex) {
             Logger.getLogger(ControladorBorrarDao.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
+        this.texto.setText();
     }
 
     @Override
