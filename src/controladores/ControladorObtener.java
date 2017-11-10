@@ -25,6 +25,13 @@ import tecladoDAO.ConsultasDAO;
 public class ControladorObtener implements MouseListener{
 
     private JTextField texto;
+
+    public ControladorObtener(JTextField texto) {
+        this.texto = texto;
+    }
+
+   
+    
     
     
     @Override
@@ -35,11 +42,12 @@ public class ControladorObtener implements MouseListener{
          //   System.out.println(consultasDAO.obtenerMaxID("palabras"));
           String rst = consultasDAO.obtenerPalabraID("palabras", consultasDAO.obtenerMaxID("palabras"));
              JOptionPane.showMessageDialog(null, "Palabra obtenida " + rst);
+             texto.setText(rst);
         } catch (SQLException ex) {
             Logger.getLogger(ControladorBorrarDao.class.getName()).log(Level.SEVERE, null, ex);
         }
        
-        this.texto.setText();
+        
     }
 
     @Override

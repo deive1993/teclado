@@ -61,7 +61,7 @@ public class Teclado extends JFrame{
     private ControladorLimpiar controladorLimpiar = new ControladorLimpiar(texto);
     private ControladorEspacio controladorEspacio = new ControladorEspacio(texto,arrLetra,arrNumero,arrSimbolo);
     private ControladorBorrar controladorBorrar = new ControladorBorrar(texto);
-    private ControladorObtener controladorObtener = new ControladorObtener();
+    private ControladorObtener controladorObtener = new ControladorObtener(texto);
     private ControladorGuardar controladorGuardar = new ControladorGuardar(texto,palabrasIngresadas,letraIngresada);
     private ControladorBorrarDao controladorBorrarDao = new ControladorBorrarDao();
     private String Letra;
