@@ -23,14 +23,15 @@ import tecladoDAO.ConsultasDAO;
  */
 public class ControladorObtener implements MouseListener{
 
+    
     @Override
     public void mouseClicked(MouseEvent evt) {
        
         ConsultasDAO consultasDAO = new ConsultasDAO();
         try {
-            System.out.println(consultasDAO.obtenerUltPalabra("palabras"));
-           //consultasDAO.obtenerMaxID("palabras");
-             JOptionPane.showMessageDialog(null, "Palabra obtenida");
+         //   System.out.println(consultasDAO.obtenerMaxID("palabras"));
+          String rst = consultasDAO.obtenerPalabraID("palabras", consultasDAO.obtenerMaxID("palabras"));
+             JOptionPane.showMessageDialog(null, "Palabra obtenida" + rst);
         } catch (SQLException ex) {
             Logger.getLogger(ControladorBorrarDao.class.getName()).log(Level.SEVERE, null, ex);
         }

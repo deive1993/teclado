@@ -73,26 +73,109 @@ public class ConsultasDAO {
       
    }
    
-      public String obtenerUltPalabra(String tabla) throws SQLException{
-         String rstado= null;
-     try{
-         System.out.println(tabla);
+      public String obtenerPalabraID(String tabla, Integer id) throws SQLException{
+          String rst = ""; 
+      try{
          conect=DriverManager.getConnection(url,user,password);
-         PreparedStatement consulta = conect.prepareStatement("select max(palabra) as ultid from " + tabla );
-         ResultSet resultados = consulta.executeQuery();
-         while(resultados.next()){
-          rstado=resultados.getString(null);
+         PreparedStatement consulta = conect.prepareStatement("SELECT palabra FROM  " + tabla +  " WHERE id = ?" );
+         consulta.setInt(1, id);
+         ResultSet resultado = consulta.executeQuery();
+         while(resultado.next()){
+            rst = resultado.getString("palabra");
          }
-         
       }catch(SQLException e){
          JOptionPane.showMessageDialog(null, e);
       }
-      conect.close(); 
-       return rstado;
-      
-      
+       conect.close();
+       return rst;
    }
-        public void mostrarPalabras(String tabla) throws SQLException{
+   
+      }
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      
+      /*
+    public ArrayList<Letra> recuperarTodas(String tabla) throws SQLException{
+      ArrayList<Letra> lista = new ArrayList<>();
+      try{
+         PreparedStatement consulta = conect.prepareStatement("SELECT letra, from " + tabla);
+         ResultSet resultado = consulta.executeQuery();
+         while(resultado.next()){
+            lista.add(new Letra(resultado.getString("letra")));
+         }
+      }catch(SQLException ex){
+         throw new SQLException(ex);
+      }
+      return lista;
+   }
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ public void mostrarPalabras(String tabla) throws SQLException{
      
             
              DefaultTableModel modelo = new DefaultTableModel();
@@ -119,18 +202,4 @@ public class ConsultasDAO {
       
       
    }
-    public ArrayList<Letra> recuperarTodas(String tabla) throws SQLException{
-      ArrayList<Letra> lista = new ArrayList<>();
-      try{
-         PreparedStatement consulta = conect.prepareStatement("SELECT letra, from " + tabla);
-         ResultSet resultado = consulta.executeQuery();
-         while(resultado.next()){
-            lista.add(new Letra(resultado.getString("letra")));
-         }
-      }catch(SQLException ex){
-         throw new SQLException(ex);
-      }
-      return lista;
-   }
-
-}
+*/

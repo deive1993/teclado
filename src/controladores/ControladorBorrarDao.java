@@ -25,7 +25,7 @@ public class ControladorBorrarDao implements MouseListener{
         
         ConsultasDAO consultasDAO = new ConsultasDAO();
         try {
-            //System.out.println(consultasDAO.obtenerMaxID("palabras"));
+           System.out.println(consultasDAO.obtenerMaxID("palabras"));
             consultasDAO.borrarPorID("palabras", consultasDAO.obtenerMaxID("palabras"));
              JOptionPane.showMessageDialog(null, "Palabra borrada con exito");
         } catch (SQLException ex) {
