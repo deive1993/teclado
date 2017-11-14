@@ -12,13 +12,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.JTextComponent;
 import models.Letra;
 import visual.Teclado;
 
 
 public class ConsultasDAO {
    Connection conect;
+   JTextField texto;
    PreparedStatement s;
    String user = "root";
    String password = "";
@@ -43,6 +46,27 @@ public class ConsultasDAO {
         }
        conect.close();
    }
+   
+      public void actualizarPalabra(String palabra) throws SQLException{
+       try {
+            Class.forName(driver);
+            conect=DriverManager.getConnection(url,user,password);
+           // s=conect.prepareStatement("UPDATE palabras SET palabra'"+texto.getText());
+            s=conect.prepareStatement("UPDATE palabras SET palabra='"+texto.getText()+"'");
+            s.setString(1, palabra);
+            s.executeUpdate();
+
+              
+           } 
+        catch (ClassNotFoundException e) {
+              JOptionPane.showMessageDialog(null, e);}
+       
+        catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+       conect.close();
+   }
+   
    public void borrarPorID(String tabla, Integer id) throws SQLException{
       try{
          conect=DriverManager.getConnection(url,user,password);

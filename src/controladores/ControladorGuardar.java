@@ -41,11 +41,16 @@ public class ControladorGuardar implements MouseListener{
     public void mouseClicked(MouseEvent evt) {
         ConsultasDAO consultasDAO = new ConsultasDAO();
        try {
+           
            consultasDAO.guardarPalabra(texto.getText());
+           
            JOptionPane.showMessageDialog(null, "palabras guardadas exitosamente");
-       } catch (SQLException ex) {
+       } 
+       
+       catch (SQLException ex) {
            Logger.getLogger(ControladorGuardar.class.getName()).log(Level.SEVERE, null, ex);
        }
+       
       letraIngresada.add(texto.getText());
               String[]data = (String[])letraIngresada.toArray(new String[letraIngresada.size()]);
         palabrasIngresadas.setListData(data);

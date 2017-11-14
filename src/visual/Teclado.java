@@ -7,16 +7,13 @@ package visual;
 
 import controladores.ControladorBorrar;
 import controladores.ControladorBorrarDao;
+import controladores.ControladorActualizar;
 import controladores.ControladorEspacio;
 import controladores.ControladorGuardar;
 import controladores.ControladorLimpiar;
 import controladores.ControladorObtener;
 import controladores.ControladorSalir;
 import java.awt.GridLayout;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,13 +22,9 @@ import models.Letra;
 import javax.swing.GroupLayout;
 import static javax.swing.GroupLayout.Alignment.BASELINE;
 import static javax.swing.GroupLayout.Alignment.LEADING;
-import javax.swing.GroupLayout.ParallelGroup; 
-import javax.swing.GroupLayout.SequentialGroup; 
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableModel;
 import models.Numero;
 import models.Simbolo;
 
@@ -47,6 +40,7 @@ public class Teclado extends JFrame{
     private JButton guardar = new JButton("GUARDAR");
     private JButton obtener = new JButton("OBTENER");
     private JButton borrarDao = new JButton("BORRARDAO");
+    private JButton actualizar = new JButton("ACTUALIZAR");
     private JTextField texto = new JTextField("") ;
         //arraylist 
     private ArrayList<String> letraIngresada = new ArrayList<String>();
@@ -64,6 +58,8 @@ public class Teclado extends JFrame{
     private ControladorObtener controladorObtener = new ControladorObtener(texto);
     private ControladorGuardar controladorGuardar = new ControladorGuardar(texto,palabrasIngresadas,letraIngresada);
     private ControladorBorrarDao controladorBorrarDao = new ControladorBorrarDao();
+    private ControladorActualizar controladorActualizar = new ControladorActualizar(texto);
+    
     private String Letra;
 
     public Teclado() {
@@ -84,6 +80,8 @@ public class Teclado extends JFrame{
         this.guardar.addMouseListener(controladorGuardar);
         this.borrarDao.addMouseListener(controladorBorrarDao);
         this.obtener.addMouseListener(controladorObtener);
+        this.obtener.addMouseListener(controladorObtener);
+        this.actualizar.addMouseListener(controladorActualizar);
    
     }
    
@@ -148,7 +146,7 @@ public class Teclado extends JFrame{
                     .addComponent(limpiar)))
             .addComponent(salir))
          //   .addComponent(palabrasIngresadas)
-            .addComponent(tablaTeclado)
+            .addComponent(actualizar)
     );
     
         }
