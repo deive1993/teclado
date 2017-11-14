@@ -29,13 +29,15 @@ public class ControladorActualizar implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent evt) {
      ConsultasDAO consultasDAO = new ConsultasDAO();
-        System.out.println("palabra actualizada");
+       // System.out.println("palabra actualizada");
        try {
-           consultasDAO.actualizarPalabra(texto.getText());
+           //consultasDAO.actualizarPalabra(texto.getText());
+           String rst = consultasDAO.obtenerPalabraID("palabras", consultasDAO.obtenerMaxID("palabras"));
+           texto.setText(rst);
            
-           JOptionPane.showMessageDialog(null, "palabra actualizada exitosamente");
+        //   JOptionPane.showMessageDialog(null, "palabra actualizada exitosamente");
        } catch (SQLException ex) {
-           Logger.getLogger(ControladorGuardar.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(ControladorActualizar.class.getName()).log(Level.SEVERE, null, ex);
        }
        
        
